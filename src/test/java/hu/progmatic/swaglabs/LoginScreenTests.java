@@ -1,6 +1,7 @@
 package hu.progmatic.swaglabs;
 
 import hu.progmatic.driverfactory.DriverBaseTest;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -18,5 +19,8 @@ public class LoginScreenTests extends DriverBaseTest {
         WebElement loginButton = driver.findElement(By.id("login-button"));
         loginButton.click();
         Thread.sleep(3000);
+        Assert.assertEquals("alma","korte"); //failed
+        //Assert.assertEquals("alma","alma"); //passed
+
     }
 }
