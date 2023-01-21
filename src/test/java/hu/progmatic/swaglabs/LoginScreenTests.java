@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 
 public class LoginScreenTests extends DriverBaseTest {
 
-    //valid username empty pwd
+    // TC1: valid username empty pwd
     @Test
     public void validUsernameEmptyPwdTest() throws InterruptedException {
         driver.get("https://www.saucedemo.com");
@@ -30,7 +30,7 @@ public class LoginScreenTests extends DriverBaseTest {
         // megkeressük a hibaüzenetet a felületen (bármely olyan webelement, ahol a szöveg a html tag-ek között az, hogy Epic sadface: Password is required )
         WebElement errorMessage = driver.findElement(By.xpath("//*[text()='Epic sadface: Password is required']"));
         // VAGY megkeressük a hibaüzenetet oly módon, hogy azon h3 html tag, amelyiknek a data-test attribútumának az értéke az, hogy "error"
-        // WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
+        //WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
 
         // annak ellenőrzése, hogy az elvárt hibaüzenetet tartalmazza-e az errorMessage html element tag-ek közötti értéke
         Assert.assertEquals("Epic sadface: Password is required", errorMessage.getText());
