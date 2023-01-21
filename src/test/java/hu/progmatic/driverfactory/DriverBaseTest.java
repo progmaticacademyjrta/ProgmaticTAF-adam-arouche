@@ -1,6 +1,7 @@
+package hu.progmatic.driverfactory;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,7 +14,7 @@ public class DriverBaseTest {
     protected WebDriver driver;
 
     @BeforeAll
-    public void driverSetup(){
+    public void driverSetup() {
         System.setProperty("webdriver.chrome.driver", "chromedriver");
 
         //Creating an object of ChromeDriver
@@ -30,7 +31,7 @@ public class DriverBaseTest {
 
 
     @AfterAll
-    public void driverCleanUp(){
+    public void driverCleanUp() {
         driver.quit();
     }
 }

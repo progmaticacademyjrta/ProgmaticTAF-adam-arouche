@@ -1,3 +1,6 @@
+package hu.progmatic.exampletests;
+
+import hu.progmatic.driverfactory.DriverBaseTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
@@ -5,7 +8,7 @@ import org.junit.jupiter.api.TestInstance;
 public class ProgmaticHomeTest extends DriverBaseTest {
 
     @Test
-    public void openProgmaticHomeScreenTest(){
+    public void openProgmaticHomeScreenTest() {
         driver.get("https://progmatic.hu");
     }
 
