@@ -43,4 +43,18 @@ public class LoginScreenTests extends DriverBaseTest {
         // Assert.assertTrue(5==7); // failed
         // Assert.assertTrue(7==7); // passed
     }
+
+    // TC2: empty username valid pwd
+    @Test
+    public void emptyUsernameValidPwdTest() throws InterruptedException {
+        driver.get("https://www.saucedemo.com");
+        WebElement usernameInput = driver.findElement(By.id("user-name"));
+        WebElement pwdInput = driver.findElement(By.id("password"));
+        pwdInput.sendKeys("secret_sauce");
+        WebElement loginButton = driver.findElement(By.id("login-button"));
+        loginButton.click();
+        Thread.sleep(2000);
+        WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
+        Assert.assertEquals("Epic sadface: Username is required", errorMessage.getText());
+    }
 }
