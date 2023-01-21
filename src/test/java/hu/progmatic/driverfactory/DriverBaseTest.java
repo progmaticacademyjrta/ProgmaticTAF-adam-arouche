@@ -15,7 +15,7 @@ public class DriverBaseTest {
 
     @BeforeAll
     public void driverSetup() {
-        System.setProperty("webdriver.chrome.driver", "chromedriver");
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 
         //Creating an object of ChromeDriver
         driver = new ChromeDriver();
