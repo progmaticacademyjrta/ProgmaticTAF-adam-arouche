@@ -19,8 +19,13 @@ public class LoginScreenTests extends DriverBaseTest {
         WebElement loginButton = driver.findElement(By.id("login-button"));
         loginButton.click();
         Thread.sleep(3000);
-        Assert.assertEquals("alma","korte"); //failed
-        //Assert.assertEquals("alma","alma"); //passed
 
+        WebElement errorMessage = driver.findElement(By.xpath("//*[text()='Epic sadface: Password is required']"));
+        Assert.assertEquals("Epic sadface: Password is required", errorMessage.getText());
+        // VAGY
+        Assert.assertTrue(errorMessage.isDisplayed());
+
+        //Assert.assertEquals("alma","korte"); //failed
+        //Assert.assertEquals("alma","alma"); //passed
     }
 }
