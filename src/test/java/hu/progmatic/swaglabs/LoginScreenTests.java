@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 
 public class LoginScreenTests extends DriverBaseTest {
 
-    // TC1: valid username empty pwd
+    // TC1
     @Test
     public void validUsernameEmptyPwdTest() throws InterruptedException {
         driver.get("https://www.saucedemo.com");
@@ -44,7 +44,7 @@ public class LoginScreenTests extends DriverBaseTest {
         // Assert.assertTrue(7==7); // passed
     }
 
-    // TC2: empty username valid pwd
+    // TC2
     @Test
     public void emptyUsernameValidPwdTest() throws InterruptedException {
         driver.get("https://www.saucedemo.com");
@@ -54,11 +54,12 @@ public class LoginScreenTests extends DriverBaseTest {
         WebElement loginButton = driver.findElement(By.id("login-button"));
         loginButton.click();
         Thread.sleep(2000);
+
         WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
         Assert.assertEquals("Epic sadface: Username is required", errorMessage.getText());
     }
 
-    // TC3: empty username empty pwd
+    // TC3
     @Test
     public void emptyUsernameEmptyPwdTest() throws InterruptedException {
         driver.get("https://www.saucedemo.com");
@@ -67,7 +68,130 @@ public class LoginScreenTests extends DriverBaseTest {
         WebElement loginButton = driver.findElement(By.id("login-button"));
         loginButton.click();
         Thread.sleep(2000);
+
         WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
-        Assert.assertEquals("Epic sadface: Username is required" , errorMessage.getText());
+        Assert.assertEquals("Epic sadface: Username is required", errorMessage.getText());
+    }
+
+    // TC4
+    @Test
+    public void validUsernameWrongPwdTest() throws InterruptedException {
+        driver.get("https://www.saucedemo.com");
+        WebElement usernameInput = driver.findElement(By.id("user-name"));
+        usernameInput.sendKeys("standard_user");
+        WebElement pwdInput = driver.findElement(By.id("password"));
+        pwdInput.sendKeys("wrongpassword");
+        WebElement loginButton = driver.findElement(By.id("login-button"));
+        loginButton.click();
+        Thread.sleep(2000);
+
+        WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
+        Assert.assertEquals("Epic sadface: Username and password do not match any user in this service", errorMessage.getText());
+    }
+
+    // TC5
+    @Test
+    public void wrongUsernameValidPwdTest() throws InterruptedException {
+        driver.get("https://www.saucedemo.com");
+        WebElement usernameInput = driver.findElement(By.id("user-name"));
+        usernameInput.sendKeys("wrongusername");
+        WebElement pwdInput = driver.findElement(By.id("password"));
+        pwdInput.sendKeys("secret_sauce");
+        WebElement loginButton = driver.findElement(By.id("login-button"));
+        loginButton.click();
+        Thread.sleep(2000);
+
+        WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
+        Assert.assertEquals("Epic sadface: Username and password do not match any user in this service", errorMessage.getText());
+    }
+
+    // TC6
+    @Test
+    public void wrongUsernameWrongPwdTest() throws InterruptedException {
+        driver.get("https://www.saucedemo.com");
+        WebElement usernameInput = driver.findElement(By.id("user-name"));
+        usernameInput.sendKeys("wrongusername");
+        WebElement pwdInput = driver.findElement(By.id("password"));
+        pwdInput.sendKeys("wrongpassword");
+        WebElement loginButton = driver.findElement(By.id("login-button"));
+        loginButton.click();
+        Thread.sleep(2000);
+
+        WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
+        Assert.assertEquals("Epic sadface: Username and password do not match any user in this service", errorMessage.getText());
+    }
+
+    // TC7
+    @Test
+    public void validUsernameValidPwdTest() throws InterruptedException {
+        driver.get("https://www.saucedemo.com");
+        WebElement usernameInput = driver.findElement(By.id("user-name"));
+        usernameInput.sendKeys("standard_user");
+        WebElement pwdInput = driver.findElement(By.id("password"));
+        pwdInput.sendKeys("secret_sauce");
+        WebElement loginButton = driver.findElement(By.id("login-button"));
+        loginButton.click();
+        String pageCurrentUrl = driver.getCurrentUrl();
+        Thread.sleep(2000);
+
+        Assert.assertEquals("https://www.saucedemo.com/inventory.html", pageCurrentUrl);
+    }
+
+    // TC8
+    @Test
+    public void emptyUsernameWrongPwdTest() throws InterruptedException {
+        driver.get("https://www.saucedemo.com");
+        WebElement usernameInput = driver.findElement(By.id("user-name"));
+        WebElement pwdInput = driver.findElement(By.id("password"));
+        pwdInput.sendKeys("wrongpassword");
+        WebElement loginButton = driver.findElement(By.id("login-button"));
+        loginButton.click();
+        Thread.sleep(2000);
+
+        WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
+        Assert.assertEquals("Epic sadface: Username is required", errorMessage.getText());
+    }
+
+    // TC9 wrong username and empty pwd
+    @Test
+    public void wrongUsernameEmptyPwdTest() throws InterruptedException {
+        driver.get("https://www.saucedemo.com");
+        WebElement usernameInput = driver.findElement(By.id("user-name"));
+        WebElement pwdInput = driver.findElement(By.id("password"));
+        pwdInput.sendKeys("wrongpassword");
+        WebElement loginButton = driver.findElement(By.id("login-button"));
+        loginButton.click();
+        Thread.sleep(2000);
+
+        WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
+        Assert.assertEquals("Epic sadface: Username is required", errorMessage.getText());
+    }
+
+    // TC10: username and pwd placeholder
+    @Test
+    public void usernameAndPwdPlaceholderTest() throws InterruptedException {
+        driver.get("https://www.saucedemo.com");
+        WebElement usernameInput = driver.findElement(By.id("user-name"));
+        String usernamePlaceholderValue = usernameInput.getAttribute("placeholder");
+        WebElement pwdInput = driver.findElement(By.id("password"));
+        String pwdPlaceholderValue =  pwdInput.getAttribute("placeholder");
+        WebElement loginButton = driver.findElement(By.id("login-button"));
+        loginButton.click();
+        Thread.sleep(2000);
+
+        WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
+        Assert.assertEquals("Username", usernamePlaceholderValue);
+        Assert.assertEquals("Password", pwdPlaceholderValue);
+    }
+
+    // TC11: username and pwd placeholder
+    @Test
+    public void isPasswordFieldPwdTypeTest() throws InterruptedException {
+        driver.get("https://www.saucedemo.com");
+        WebElement pwdInput = driver.findElement(By.id("password"));
+        String pwdPlaceholderValue =  pwdInput.getAttribute("type");
+        Thread.sleep(2000);
+
+        Assert.assertEquals("password", pwdPlaceholderValue);
     }
 }

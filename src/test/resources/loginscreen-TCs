@@ -10,4 +10,4 @@ LoginScreen TCs
 - TC8: empty username and wrong pwd
 - TC9: wrong username and empty pwd
 - TC10: username and pwd placeholder
-- TC11: is pwd field masked
+- TC11: is pwd field masked? the "type" of the input field "password" or not?
