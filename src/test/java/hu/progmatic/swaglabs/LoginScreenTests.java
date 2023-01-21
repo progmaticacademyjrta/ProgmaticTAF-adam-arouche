@@ -57,4 +57,17 @@ public class LoginScreenTests extends DriverBaseTest {
         WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
         Assert.assertEquals("Epic sadface: Username is required", errorMessage.getText());
     }
+
+    // TC3: empty username empty pwd
+    @Test
+    public void emptyUsernameEmptyPwdTest() throws InterruptedException {
+        driver.get("https://www.saucedemo.com");
+        WebElement usernameInput = driver.findElement(By.id("user-name"));
+        WebElement pwdInput = driver.findElement(By.id("password"));
+        WebElement loginButton = driver.findElement(By.id("login-button"));
+        loginButton.click();
+        Thread.sleep(2000);
+        WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
+        Assert.assertEquals("Epic sadface: Username is required" , errorMessage.getText());
+    }
 }
