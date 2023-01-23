@@ -1,0 +1,46 @@
+package hu.progmatic.swaglabs;
+
+import hu.progmatic.driverfactory.DriverBaseTest;
+
+import org.junit.Assert;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+public class ProductScreenTests extends DriverBaseTest {
+
+    @BeforeEach
+    public void createSession() throws InterruptedException {
+        driver.get("https://www.saucedemo.com");
+        login();
+    }
+
+    @Test
+    public void defaultSortOptionTest() throws InterruptedException {
+        WebElement selectedFilterOption = driver
+        .findElement(By.xpath("//div[@class='right_component']//span[@class='active_option']"));
+        Assert.assertEquals ("NAME (A TO Z)", selectedFilterOption.getText()); 
+    }
+
+    @Test
+    public void firstItemInAToZTest() throws InterruptedException {
+        WebElement firstElement = driver.findElement(By.id("item_4_title_link"));
+        Assert.assertEquals ("Sauce Labs Backpack", firstElement.getText());
+        // We could get all the items in a list, and check the texts
+        // List<WebElement> items = driver.findElements(By.className("inventory_item_name"));
+    } 
+
+    private void login() throws InterruptedException {
+        WebElement usernameInput  = driver.findElement(By.id("user-name"));
+        WebElement pwdInput = driver.findElement(By.id("password"));
+        usernameInput.sendKeys("standard_user");
+        pwdInput.sendKeys("secret_sauce");
+        WebElement loginButton = driver.findElement(By.id("login-button"));
+        loginButton.click();
+        // check landing page
+        Thread.sleep(2000);
+        Assert.assertEquals("https://www.saucedemo.com/inventory.html", driver.getCurrentUrl());
+    }
+
+}
