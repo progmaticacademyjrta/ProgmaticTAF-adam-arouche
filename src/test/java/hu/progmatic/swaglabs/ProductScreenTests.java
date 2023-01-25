@@ -43,6 +43,25 @@ public class ProductScreenTests extends DriverBaseTest {
         Assert.assertEquals ("Sauce Labs Backpack", firstItemTitle);
     }
 
+    @Test
+    public void clickOnItemPictureAndRedirectTest() throws InterruptedException {
+        WebElement itemPicture = driver.findElement(By.cssSelector("img[alt='Sauce Labs Backpack']"));
+        itemPicture.click();
+        Assert.assertEquals ("https://www.saucedemo.com/inventory-item.html?id=4", driver.getCurrentUrl());
+    }
+
+    @Test
+    public void clickOnItemTitleAndRedirectTest() throws InterruptedException {
+        WebElement itemPicture = driver.findElement(By.linkText("Sauce Labs Backpack"));
+        itemPicture.click();
+        //WebElement backToProductsButton = driver.findElement(By.id("back-to-products"));
+        //WebElement backToProductsButton = driver.findElement(By.cssSelector("button[data-test='back-to-products']"));
+        //WebElement backToProductsButton = driver.findElement(By.name("back-to-products"));
+        WebElement backToProductsButton = driver.findElement(By.xpath("//*[@id='back-to-products']"));
+        Assert.assertTrue(backToProductsButton.isDisplayed());
+    }
+
+
     private void login() throws InterruptedException {
         WebElement usernameInput  = driver.findElement(By.id("user-name"));
         usernameInput.sendKeys("standard_user");
