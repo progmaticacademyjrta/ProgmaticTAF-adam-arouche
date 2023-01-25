@@ -12,6 +12,5 @@ Inventory Screen TCs
 - TC10: clicking on the "Add to Cart" button changes the button text to remove
 - TC11: clicking on the "Add to Cart" button and then the remove button. the cart icon changes back to the original icon
 - TC12: add multiple items to the cart. remove one of them. check that only one item remains on the checkout page and it's the correct one.
-- TC13: clicling on the cart icon navigates to the cart page.
-
-TC13: menu icon
+- TC13: clicking on the cart icon navigates to the cart page.
+- TC14: menu icon works and "All items" menu item can be clickable
