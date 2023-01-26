@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -38,6 +39,43 @@ public class ProductScreenTests extends DriverBaseTest {
         }*/
         String firstItemTitle = items.get(0).getText();
         Assert.assertEquals("Sauce Labs Backpack", firstItemTitle);
+    }
+
+    @Test
+    public void firstItemInZToATest() throws InterruptedException {
+        Select sortDropdown = new Select(driver.findElement(By.cssSelector("select[data-test='product_sort_container']")));
+        sortDropdown.selectByVisibleText("Name (Z to A)");
+        Thread.sleep(2000);
+        List<WebElement> items = driver.findElements(By.className("inventory_item_name"));
+        String firstItemTitle = items.get(0).getText();
+        Assert.assertEquals("Test.allTheThings() T-Shirt (Red)", firstItemTitle);
+    }
+
+    @Test
+    public void firstItemInZToAV2Test() throws InterruptedException {
+        WebElement dropdownElement = driver.findElement(By.cssSelector("option[value='za']"));
+        dropdownElement.click();
+        List<WebElement> items = driver.findElements(By.className("inventory_item_name"));
+        String firstItemTitle = items.get(0).getText();
+        Assert.assertEquals("Test.allTheThings() T-Shirt (Red)", firstItemTitle);
+    }
+
+    @Test
+    public void firstItemInZToAV3Test() throws InterruptedException {
+        Select selectByValue = new Select(driver.findElement(By.className("product_sort_container")));
+        selectByValue.selectByValue("za");
+        List<WebElement> items = driver.findElements(By.className("inventory_item_name"));
+        String firstItemTitle = items.get(0).getText();
+        Assert.assertEquals("Test.allTheThings() T-Shirt (Red)", firstItemTitle);
+    }
+
+    @Test
+    public void firstItemInZToAV4Test() throws InterruptedException {
+        WebElement drowdown = driver.findElement(By.xpath("//select/option[2]"));
+        drowdown.click();
+        List<WebElement> items = driver.findElements(By.className("inventory_item_name"));
+        String firstItemTitle = items.get(0).getText();
+        Assert.assertEquals("Test.allTheThings() T-Shirt (Red)", firstItemTitle);
     }
 
     @Test
