@@ -129,6 +129,17 @@ public class ProductScreenTests extends DriverBaseTest {
         Assert.assertEquals("https://www.saucedemo.com/cart.html", driver.getCurrentUrl());
     }
 
+    @Test
+    public void allItemMenuitemTest() {
+        WebElement itemPicture = driver.findElement(By.linkText("Sauce Labs Backpack"));
+        itemPicture.click();
+        WebElement menu = driver.findElement(By.id("react-burger-menu-btn"));
+        menu.click();
+        WebElement allItemsMenuItem = driver.findElement(By.id("inventory_sidebar_link"));
+        allItemsMenuItem.click();
+        Assert.assertEquals("https://www.saucedemo.com/inventory.html",driver.getCurrentUrl());
+    }
+
     private void login() throws InterruptedException {
         WebElement usernameInput = driver.findElement(By.id("user-name"));
         usernameInput.sendKeys("standard_user");
