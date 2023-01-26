@@ -25,10 +25,9 @@ public class ProductScreenTests extends DriverBaseTest {
 
     @Test
     public void firstItemInAToZDraftTest() throws InterruptedException {
-        WebElement firstElement = driver.findElement(By.id("item_4_title_link"));
-        Assert.assertEquals("Sauce Labs Backpack", firstElement.getText());
-        // We could get all the items in a list, and check the texts
-        // List<WebElement> items = driver.findElements(By.className("inventory_item_name"));
+        List<WebElement> items = driver.findElements(By.className("inventory_item_name"));
+        String firstItemTitle = items.get(0).getText();
+        Assert.assertEquals("Sauce Labs Backpack", firstItemTitle);
     }
 
     @Test
@@ -61,14 +60,73 @@ public class ProductScreenTests extends DriverBaseTest {
 
     @Test
     public void addMultipleItemsToCartBadgeTest() {
-        WebElement itemFirstCartButton = driver.findElement(By.id("add-to-cart-sauce-labs-backpack"));
-        itemFirstCartButton.click();
-        WebElement itemSecondCartButton = driver.findElement(By.id("add-to-cart-sauce-labs-onesie"));
-        itemSecondCartButton.click();
+        WebElement backpackAddButton = driver.findElement(By.id("add-to-cart-sauce-labs-backpack"));
+        backpackAddButton.click();
+        WebElement onesieAddButton = driver.findElement(By.id("add-to-cart-sauce-labs-onesie"));
+        onesieAddButton.click();
         WebElement cartBadge = driver.findElement(By.className("shopping_cart_badge"));
         //System.out.println(cartBadge.getText());
         //String badgeValue = cartBadge.getText();
         Assert.assertEquals("2", cartBadge.getText());
+
+    }
+
+    @Test
+    public void checkAddToCartButtonTextChangeOnClick() {
+        WebElement backpackAddButton = driver.findElement(By.id("add-to-cart-sauce-labs-backpack"));
+        backpackAddButton.click();
+        WebElement itemFirstCartRemoveButton = driver.findElement(By.id("remove-sauce-labs-backpack"));
+        Assert.assertEquals("REMOVE", itemFirstCartRemoveButton.getText());
+    }
+
+    @Test
+    public void checkCartIconChangesBackToOriginalOnItemRemoval() {
+        WebElement backpackAddButton = driver.findElement(By.id("add-to-cart-sauce-labs-backpack"));
+        backpackAddButton.click();
+        WebElement cartIcon = driver.findElement(By.className("shopping_cart_link"));
+        Assert.assertEquals("1", cartIcon.getText());
+        WebElement itemFirstCartRemoveButton = driver.findElement(By.id("remove-sauce-labs-backpack"));
+        itemFirstCartRemoveButton.click();
+        Assert.assertEquals("", cartIcon.getText());
+    }
+
+    @Test
+    public void checkNumberOfItemsOnCartIconDecreaseOnItemRemoval() {
+        WebElement backpackAddButton = driver.findElement(By.id("add-to-cart-sauce-labs-backpack"));
+        backpackAddButton.click();
+        WebElement bikeLighAddButton = driver.findElement(By.id("add-to-cart-sauce-labs-bike-light"));
+        bikeLighAddButton.click();
+
+        WebElement cartIcon = driver.findElement(By.className("shopping_cart_link"));
+        Assert.assertEquals("2", cartIcon.getText());
+
+        WebElement itemFirstCartRemoveButton = driver.findElement(By.id("remove-sauce-labs-backpack"));
+        itemFirstCartRemoveButton.click();
+        Assert.assertEquals("1", cartIcon.getText());
+    }
+
+    @Test
+    public void cartPageDoesNotShowRemovedItem() {
+        WebElement backpackAddButton = driver.findElement(By.id("add-to-cart-sauce-labs-backpack"));
+        backpackAddButton.click();
+        WebElement bikeLighAddButton = driver.findElement(By.id("add-to-cart-sauce-labs-bike-light"));
+        bikeLighAddButton.click();
+
+        WebElement itemFirstCartRemoveButton = driver.findElement(By.id("remove-sauce-labs-backpack"));
+        itemFirstCartRemoveButton.click();
+        WebElement cartIcon = driver.findElement(By.className("shopping_cart_link"));
+        cartIcon.click();
+        List<WebElement> cartItems = driver.findElements(By.className("cart_item"));
+        Assert.assertEquals(1, cartItems.size());
+        WebElement cartItem = cartItems.get(0).findElement(By.className("inventory_item_name"));
+        Assert.assertEquals("Sauce Labs Bike Light", cartItem.getText());
+    }
+
+    @Test
+    public void cartIconNavigationTest() {
+        WebElement cartIcon = driver.findElement(By.className("shopping_cart_link"));
+        cartIcon.click();
+        Assert.assertEquals("https://www.saucedemo.com/cart.html", driver.getCurrentUrl());
     }
 
     private void login() throws InterruptedException {

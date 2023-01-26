@@ -1,7 +1,7 @@
 package hu.progmatic.driverfactory;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInstance;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,7 +13,7 @@ import java.time.Duration;
 public class DriverBaseTest {
     protected WebDriver driver;
 
-    @BeforeAll
+    @BeforeEach
     public void driverSetup() {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 
@@ -29,8 +29,7 @@ public class DriverBaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(30000));
     }
 
-
-    @AfterAll
+    @AfterEach
     public void driverCleanUp() {
         driver.quit();
     }

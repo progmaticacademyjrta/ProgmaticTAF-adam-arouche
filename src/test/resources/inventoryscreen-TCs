@@ -11,6 +11,8 @@ Inventory Screen TCs
 - TC9: clicking on the "Add to Cart" button on multiple items. Check if the cart icon shows the correct number
 - TODO TC10: clicking on the "Add to Cart" button changes the button text to remove
 - TODO TC11: clicking on the "Add to Cart" button and then the remove button. the cart icon changes back to the original icon
-- TODO TC12: add multiple items to the cart. remove one of them. check that only one item remains on the checkout page and it's the correct one.
-- TODO TC13: clicking on the cart icon navigates to the cart page.
-- TODO TC14: menu icon works and "All items" menu item can be clickable
+- TODO TC12: add multiple items to the cart. remove one of them. check that the cart icon shows the correct number of items
+- TODO TC13: add multiple items to the cart. remove one of them. check that only one item remains on the checkout page and it's the correct one.
+- TODO TC14: clicking on the cart icon navigates to the cart page.
+- TODO TC15: menu icon works and "All items" menu item can be clickable
+ 
