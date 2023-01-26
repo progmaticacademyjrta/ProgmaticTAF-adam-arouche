@@ -79,6 +79,26 @@ public class ProductScreenTests extends DriverBaseTest {
     }
 
     @Test
+    public void firstItemInLowToHighTest() throws InterruptedException {
+        Select sortDropdown = new Select(driver.findElement(By.cssSelector("select[data-test='product_sort_container']")));
+        sortDropdown.selectByVisibleText("Price (low to high)");
+        Thread.sleep(2000);
+        List<WebElement> items = driver.findElements(By.className("inventory_item_name"));
+        String firstItemTitle = items.get(0).getText();
+        Assert.assertEquals("Sauce Labs Onesie", firstItemTitle);
+    }
+
+    @Test
+    public void firstItemInHighToLowTest() throws InterruptedException {
+        Select sortDropdown = new Select(driver.findElement(By.cssSelector("select[data-test='product_sort_container']")));
+        sortDropdown.selectByVisibleText("Price (high to low)");
+        Thread.sleep(2000);
+        List<WebElement> items = driver.findElements(By.className("inventory_item_name"));
+        String firstItemTitle = items.get(0).getText();
+        Assert.assertEquals("Sauce Labs Fleece Jacket", firstItemTitle);
+    }
+
+    @Test
     public void clickOnItemPictureAndRedirectTest() throws InterruptedException {
         WebElement itemPicture = driver.findElement(By.cssSelector("img[alt='Sauce Labs Backpack']"));
         itemPicture.click();
