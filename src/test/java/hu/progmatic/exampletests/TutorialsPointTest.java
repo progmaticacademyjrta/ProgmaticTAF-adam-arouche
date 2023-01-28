@@ -1,12 +1,9 @@
 package hu.progmatic.exampletests;
 
 import hu.progmatic.driverfactory.DriverBaseTest;
-import org.junit.experimental.theories.Theories;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
@@ -53,7 +50,8 @@ public class TutorialsPointTest extends DriverBaseTest {
         acceptBannerCookieButton.click();
 
         WebElement submitButton = wait.until(ExpectedConditions.elementToBeClickable(By.name("submit")));
-        Actions actions = new Actions(driver);
+        // Actions actions = new Actions(driver);
+        //jelenleg a DriverSetup metodusban hoztuk létre az actions változót és protected mivolta miatt tudjuk itt használni
         actions.moveToElement(submitButton);
         actions.perform();
         submitButton.click();
