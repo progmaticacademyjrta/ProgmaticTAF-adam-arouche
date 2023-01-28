@@ -4,7 +4,13 @@ import hu.progmatic.driverfactory.DriverBaseTest;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.beans.Visibility;
+import java.time.Duration;
 
 public class LoginScreenTests extends DriverBaseTest {
 
@@ -65,8 +71,14 @@ public class LoginScreenTests extends DriverBaseTest {
         driver.get("https://www.saucedemo.com");
         WebElement usernameInput = driver.findElement(By.id("user-name"));
         WebElement pwdInput = driver.findElement(By.id("password"));
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login-button")));
         WebElement loginButton = driver.findElement(By.id("login-button"));
+
+        WebElement loginButton2 = wait.until(ExpectedConditions.elementToBeClickable(By.id("login-button")));
+
         loginButton.click();
+
         Thread.sleep(2000);
 
         WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
@@ -84,7 +96,6 @@ public class LoginScreenTests extends DriverBaseTest {
         WebElement loginButton = driver.findElement(By.id("login-button"));
         loginButton.click();
         Thread.sleep(2000);
-
         WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
         Assert.assertEquals("Epic sadface: Username and password do not match any user in this service", errorMessage.getText());
     }
@@ -99,6 +110,7 @@ public class LoginScreenTests extends DriverBaseTest {
         pwdInput.sendKeys("secret_sauce");
         WebElement loginButton = driver.findElement(By.id("login-button"));
         loginButton.click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login-button")));
         Thread.sleep(2000);
 
         WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
