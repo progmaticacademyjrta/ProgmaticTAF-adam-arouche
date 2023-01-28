@@ -12,6 +12,7 @@ import java.time.Duration;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class DriverBaseTest {
     protected WebDriver driver;
+    protected WebDriverWait wait;
 
     @BeforeEach
     public void driverSetup() {
@@ -19,7 +20,7 @@ public class DriverBaseTest {
 
         //Creating an object of ChromeDriver
         driver = new ChromeDriver();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(30000));
+        wait = new WebDriverWait(driver, Duration.ofMillis(30000));
         driver.manage().window().maximize();
         //Deleting all the cookies
         driver.manage().deleteAllCookies();
