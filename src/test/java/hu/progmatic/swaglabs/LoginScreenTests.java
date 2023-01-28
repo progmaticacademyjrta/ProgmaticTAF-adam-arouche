@@ -4,13 +4,8 @@ import hu.progmatic.driverfactory.DriverBaseTest;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.beans.Visibility;
-import java.time.Duration;
 
 public class LoginScreenTests extends DriverBaseTest {
 
@@ -186,7 +181,7 @@ public class LoginScreenTests extends DriverBaseTest {
         WebElement usernameInput = driver.findElement(By.id("user-name"));
         String usernamePlaceholderValue = usernameInput.getAttribute("placeholder");
         WebElement pwdInput = driver.findElement(By.id("password"));
-        String pwdPlaceholderValue =  pwdInput.getAttribute("placeholder");
+        String pwdPlaceholderValue = pwdInput.getAttribute("placeholder");
         WebElement loginButton = driver.findElement(By.id("login-button"));
         loginButton.click();
         Thread.sleep(2000);
@@ -201,7 +196,7 @@ public class LoginScreenTests extends DriverBaseTest {
     public void isPasswordFieldPwdTypeTest() throws InterruptedException {
         driver.get("https://www.saucedemo.com");
         WebElement pwdInput = driver.findElement(By.id("password"));
-        String pwdPlaceholderValue =  pwdInput.getAttribute("type");
+        String pwdPlaceholderValue = pwdInput.getAttribute("type");
         Thread.sleep(2000);
 
         Assert.assertEquals("password", pwdPlaceholderValue);
