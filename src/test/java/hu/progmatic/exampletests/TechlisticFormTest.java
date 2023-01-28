@@ -15,6 +15,9 @@ public class TechlisticFormTest extends DriverBaseTest {
         WebElement acceptCookie = driver.findElement(By.id("ez-accept-all"));
         acceptCookie.click();
 
+        WebElement cookieChoiceDismiss = driver.findElement(By.id("cookieChoiceDismiss"));
+        cookieChoiceDismiss.click();
+
         WebElement firstNameInput = driver.findElement(By.name("firstname"));
         firstNameInput.sendKeys("Zsolt");
 
@@ -40,15 +43,18 @@ public class TechlisticFormTest extends DriverBaseTest {
         continentsDropdown.selectByVisibleText("Europe");
 
         WebElement seleniumCommandsDropdown = driver.findElement(By.id("selenium_commands"));
-        seleniumCommandsDropdown.sendKeys(Keys.DOWN);
-        seleniumCommandsDropdown.sendKeys(Keys.DOWN);
+        seleniumCommandsDropdown.sendKeys(Keys.DOWN, Keys.DOWN);
+        // VAGY
+        //seleniumCommandsDropdown.sendKeys(Keys.DOWN);
+        //seleniumCommandsDropdown.sendKeys(Keys.DOWN);
 
         WebElement fileUploadInput = driver.findElement(By.id("photo"));
-        //WebElement fileUploadInput = driver.findElement(By.cssSelector("input[name='photo'][type='file']"));
         // MACOS esetén:
         fileUploadInput.sendKeys("/Users/zsszurovecz/Desktop/progmaticjrta/ProgmaticTAF/src/test/resources/uploadexample.txt");
         // WINDOWS esetén:
-        //fileUploadInput.sendKeys("C:\\Users\\zsszurovecz\\Desktop\\progmaticjrta\\ProgmaticTAF\\src\\test\\resources\\uploadexample.txt");
+        //String path = System.getProperty("user.dir");
+        //System.out.println("Working Directory = " + path);
+        //fileUploadInput.sendKeys(path+ "\\src\\test\\resources\\uploadexample.txt");
         Thread.sleep(2000);
     }
 }
