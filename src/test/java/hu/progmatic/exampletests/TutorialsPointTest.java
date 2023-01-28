@@ -56,8 +56,8 @@ public class TutorialsPointTest extends DriverBaseTest {
         actions.perform();
         submitButton.click();
 
-        //driver.switchTo().alert().dismiss();
-        //driver.switchTo().defaultContent();
+        driver.switchTo().alert().dismiss(); // a felugró ablak Cancel gombjára kattint
+        driver.switchTo().defaultContent(); // WebDriver-t visszaváltja az alapértelmezett ablakra
         Thread.sleep(2000);
     }
 }
