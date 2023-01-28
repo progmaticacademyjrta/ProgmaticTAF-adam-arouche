@@ -34,8 +34,10 @@ public class TutorialsPointTest extends DriverBaseTest {
         professionCheckbox.click();
 
         WebElement fileUploadInput = driver.findElement(By.name("photo"));
-        //WebElement fileUploadInput = driver.findElement(By.cssSelector("input[name='photo'][type='file']"));
+        // MACOS esetén:
         fileUploadInput.sendKeys("/Users/zsszurovecz/Desktop/progmaticjrta/ProgmaticTAF/src/test/resources/uploadexample.txt");
+        // WINDOWS esetén:
+        //fileUploadInput.sendKeys("C:\\Users\\zsszurovecz\\Desktop\\progmaticjrta\\ProgmaticTAF\\src\\test\\resources\\uploadexample.txt");
 
         WebElement flavourOfSeleniumCheckbox = driver.findElement(By.cssSelector("input[value='Selenium Webdriver']"));
         flavourOfSeleniumCheckbox.click();
