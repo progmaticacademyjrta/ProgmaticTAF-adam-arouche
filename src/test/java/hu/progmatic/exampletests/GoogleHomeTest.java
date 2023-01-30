@@ -2,9 +2,7 @@ package hu.progmatic.exampletests;
 
 import hu.progmatic.driverfactory.DriverBaseTest;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class GoogleHomeTest extends DriverBaseTest {
 
     @Test

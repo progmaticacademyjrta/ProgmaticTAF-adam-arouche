@@ -195,7 +195,7 @@ public class ProductScreenTests extends DriverBaseTest {
         menu.click();
         WebElement allItemsMenuItem = driver.findElement(By.id("inventory_sidebar_link"));
         allItemsMenuItem.click();
-        Assert.assertEquals("https://www.saucedemo.com/inventory.html",driver.getCurrentUrl());
+        Assert.assertEquals("https://www.saucedemo.com/inventory.html", driver.getCurrentUrl());
     }
 
     private void login() throws InterruptedException {
