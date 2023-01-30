@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class TechlisticFormTest extends DriverBaseTest {
 
-    @Test
+    @Test(description = "Fill out the Selenium practice form and click the button.")
     public void formTest() throws InterruptedException {
         driver.get("https://www.techlistic.com/p/selenium-practice-form.html#google_vignette");
         WebElement acceptCookie = driver.findElement(By.id("ez-accept-all"));

@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class ProgmaticHomeTest extends DriverBaseTest {
 
-    @Test
+    @Test(enabled = false)
     public void openProgmaticHomeScreenTest() {
         driver.get("https://progmatic.hu");
     }

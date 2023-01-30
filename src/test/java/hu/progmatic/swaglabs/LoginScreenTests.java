@@ -129,7 +129,7 @@ public class LoginScreenTests extends DriverBaseTest {
     }
 
     // TC7
-    @Test
+    @Test(groups = {"smoke","regression"})
     public void validUsernameValidPwdTest() throws InterruptedException {
         driver.get("https://www.saucedemo.com");
         WebElement usernameInput = driver.findElement(By.id("user-name"));
@@ -175,7 +175,7 @@ public class LoginScreenTests extends DriverBaseTest {
     }
 
     // TC10: username and pwd placeholder
-    @Test
+    @Test(groups = "regression")
     public void usernameAndPwdPlaceholderTest() throws InterruptedException {
         driver.get("https://www.saucedemo.com");
         WebElement usernameInput = driver.findElement(By.id("user-name"));

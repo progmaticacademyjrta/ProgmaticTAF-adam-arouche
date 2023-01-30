@@ -14,7 +14,7 @@ public class DriverBaseTest {
     protected WebDriverWait wait;
     protected Actions actions;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void driverSetup() {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 
@@ -32,7 +32,7 @@ public class DriverBaseTest {
         actions = new Actions(driver);
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void driverCleanUp() {
         driver.quit();
     }
