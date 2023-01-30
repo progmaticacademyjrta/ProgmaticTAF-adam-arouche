@@ -1,11 +1,11 @@
 package hu.progmatic.exampletests;
 
 import hu.progmatic.driverfactory.DriverBaseTest;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
 
 public class TutorialsPointTest extends DriverBaseTest {
 

@@ -1,7 +1,7 @@
 package hu.progmatic.exampletests;
 
 import hu.progmatic.driverfactory.DriverBaseTest;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 
 public class ProgmaticHomeTest extends DriverBaseTest {
 
