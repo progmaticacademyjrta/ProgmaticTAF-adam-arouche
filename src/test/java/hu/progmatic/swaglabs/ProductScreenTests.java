@@ -1,18 +1,18 @@
 package hu.progmatic.swaglabs;
 
 import hu.progmatic.driverfactory.DriverBaseTest;
-import org.junit.Assert;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.util.List;
 
 public class ProductScreenTests extends DriverBaseTest {
 
-    @BeforeEach
+    @BeforeMethod
     public void createSession() throws InterruptedException {
         driver.get("https://www.saucedemo.com");
         login();
@@ -21,14 +21,14 @@ public class ProductScreenTests extends DriverBaseTest {
     @Test
     public void defaultSortOptionTest() throws InterruptedException {
         WebElement selectedFilterOption = driver.findElement(By.xpath("//div[@class='right_component']//span[@class='active_option']"));
-        Assert.assertEquals("NAME (A TO Z)", selectedFilterOption.getText());
+        Assert.assertEquals(selectedFilterOption.getText(), "NAME (A TO Z)");
     }
 
     @Test
     public void firstItemInAToZDraftTest() throws InterruptedException {
         List<WebElement> items = driver.findElements(By.className("inventory_item_name"));
         String firstItemTitle = items.get(0).getText();
-        Assert.assertEquals("Sauce Labs Backpack", firstItemTitle);
+        Assert.assertEquals(firstItemTitle, "Sauce Labs Backpack");
     }
 
     @Test
@@ -38,7 +38,7 @@ public class ProductScreenTests extends DriverBaseTest {
             System.out.println(item.getText());
         }*/
         String firstItemTitle = items.get(0).getText();
-        Assert.assertEquals("Sauce Labs Backpack", firstItemTitle);
+        Assert.assertEquals(firstItemTitle, "Sauce Labs Backpack");
     }
 
     @Test
@@ -48,7 +48,7 @@ public class ProductScreenTests extends DriverBaseTest {
         Thread.sleep(2000);
         List<WebElement> items = driver.findElements(By.className("inventory_item_name"));
         String firstItemTitle = items.get(0).getText();
-        Assert.assertEquals("Test.allTheThings() T-Shirt (Red)", firstItemTitle);
+        Assert.assertEquals(firstItemTitle, "Test.allTheThings() T-Shirt (Red)");
     }
 
     @Test
@@ -57,7 +57,7 @@ public class ProductScreenTests extends DriverBaseTest {
         dropdownElement.click();
         List<WebElement> items = driver.findElements(By.className("inventory_item_name"));
         String firstItemTitle = items.get(0).getText();
-        Assert.assertEquals("Test.allTheThings() T-Shirt (Red)", firstItemTitle);
+        Assert.assertEquals(firstItemTitle, "Test.allTheThings() T-Shirt (Red)");
     }
 
     @Test
@@ -66,7 +66,7 @@ public class ProductScreenTests extends DriverBaseTest {
         selectByValue.selectByValue("za");
         List<WebElement> items = driver.findElements(By.className("inventory_item_name"));
         String firstItemTitle = items.get(0).getText();
-        Assert.assertEquals("Test.allTheThings() T-Shirt (Red)", firstItemTitle);
+        Assert.assertEquals(firstItemTitle, "Test.allTheThings() T-Shirt (Red)");
     }
 
     @Test
@@ -75,7 +75,7 @@ public class ProductScreenTests extends DriverBaseTest {
         drowdown.click();
         List<WebElement> items = driver.findElements(By.className("inventory_item_name"));
         String firstItemTitle = items.get(0).getText();
-        Assert.assertEquals("Test.allTheThings() T-Shirt (Red)", firstItemTitle);
+        Assert.assertEquals(firstItemTitle, "Test.allTheThings() T-Shirt (Red)");
     }
 
     @Test
@@ -95,14 +95,14 @@ public class ProductScreenTests extends DriverBaseTest {
         Thread.sleep(2000);
         List<WebElement> items = driver.findElements(By.className("inventory_item_name"));
         String firstItemTitle = items.get(0).getText();
-        Assert.assertEquals("Sauce Labs Fleece Jacket", firstItemTitle);
+        Assert.assertEquals(firstItemTitle, "Sauce Labs Fleece Jacket");
     }
 
     @Test
     public void clickOnItemPictureAndRedirectTest() throws InterruptedException {
         WebElement itemPicture = driver.findElement(By.cssSelector("img[alt='Sauce Labs Backpack']"));
         itemPicture.click();
-        Assert.assertEquals("https://www.saucedemo.com/inventory-item.html?id=4", driver.getCurrentUrl());
+        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/inventory-item.html?id=4");
     }
 
     @Test
@@ -125,7 +125,7 @@ public class ProductScreenTests extends DriverBaseTest {
         WebElement cartBadge = driver.findElement(By.className("shopping_cart_badge"));
         //System.out.println(cartBadge.getText());
         //String badgeValue = cartBadge.getText();
-        Assert.assertEquals("2", cartBadge.getText());
+        Assert.assertEquals(cartBadge.getText(), "2");
 
     }
 
@@ -134,7 +134,7 @@ public class ProductScreenTests extends DriverBaseTest {
         WebElement backpackAddButton = driver.findElement(By.id("add-to-cart-sauce-labs-backpack"));
         backpackAddButton.click();
         WebElement itemFirstCartRemoveButton = driver.findElement(By.id("remove-sauce-labs-backpack"));
-        Assert.assertEquals("REMOVE", itemFirstCartRemoveButton.getText());
+        Assert.assertEquals(itemFirstCartRemoveButton.getText(), "REMOVE");
     }
 
     @Test
@@ -142,10 +142,10 @@ public class ProductScreenTests extends DriverBaseTest {
         WebElement backpackAddButton = driver.findElement(By.id("add-to-cart-sauce-labs-backpack"));
         backpackAddButton.click();
         WebElement cartIcon = driver.findElement(By.className("shopping_cart_link"));
-        Assert.assertEquals("1", cartIcon.getText());
+        Assert.assertEquals(cartIcon.getText(),"1");
         WebElement itemFirstCartRemoveButton = driver.findElement(By.id("remove-sauce-labs-backpack"));
         itemFirstCartRemoveButton.click();
-        Assert.assertEquals("", cartIcon.getText());
+        Assert.assertEquals(cartIcon.getText(), "");
     }
 
     @Test
@@ -160,7 +160,7 @@ public class ProductScreenTests extends DriverBaseTest {
 
         WebElement itemFirstCartRemoveButton = driver.findElement(By.id("remove-sauce-labs-backpack"));
         itemFirstCartRemoveButton.click();
-        Assert.assertEquals("1", cartIcon.getText());
+        Assert.assertEquals(cartIcon.getText(), "1");
     }
 
     @Test
@@ -175,16 +175,16 @@ public class ProductScreenTests extends DriverBaseTest {
         WebElement cartIcon = driver.findElement(By.className("shopping_cart_link"));
         cartIcon.click();
         List<WebElement> cartItems = driver.findElements(By.className("cart_item"));
-        Assert.assertEquals(1, cartItems.size());
+        Assert.assertEquals(cartItems.size(), 1);
         WebElement cartItem = cartItems.get(0).findElement(By.className("inventory_item_name"));
-        Assert.assertEquals("Sauce Labs Bike Light", cartItem.getText());
+        Assert.assertEquals(cartItem.getText(), "Sauce Labs Bike Light");
     }
 
     @Test
     public void cartIconNavigationTest() {
         WebElement cartIcon = driver.findElement(By.className("shopping_cart_link"));
         cartIcon.click();
-        Assert.assertEquals("https://www.saucedemo.com/cart.html", driver.getCurrentUrl());
+        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/cart.html");
     }
 
     @Test
@@ -195,7 +195,7 @@ public class ProductScreenTests extends DriverBaseTest {
         menu.click();
         WebElement allItemsMenuItem = driver.findElement(By.id("inventory_sidebar_link"));
         allItemsMenuItem.click();
-        Assert.assertEquals("https://www.saucedemo.com/inventory.html", driver.getCurrentUrl());
+        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/inventory.html");
     }
 
     private void login() throws InterruptedException {
@@ -207,7 +207,7 @@ public class ProductScreenTests extends DriverBaseTest {
         loginButton.click();
         // check landing page
         Thread.sleep(2000);
-        Assert.assertEquals("https://www.saucedemo.com/inventory.html", driver.getCurrentUrl());
+        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/inventory.html");
     }
 
 }

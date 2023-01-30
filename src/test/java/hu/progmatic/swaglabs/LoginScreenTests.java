@@ -1,11 +1,11 @@
 package hu.progmatic.swaglabs;
 
 import hu.progmatic.driverfactory.DriverBaseTest;
-import org.junit.Assert;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class LoginScreenTests extends DriverBaseTest {
 
@@ -34,7 +34,7 @@ public class LoginScreenTests extends DriverBaseTest {
         WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
 
         // annak ellenőrzése, hogy az elvárt hibaüzenetet tartalmazza-e az errorMessage html element tag-ek közötti értéke
-        Assert.assertEquals("Epic sadface: Password is required", errorMessage.getText());
+        Assert.assertEquals(errorMessage.getText(), "Epic sadface: Password is required");
         // VAGY annak ellenőrzése, hogy az előzetesen megkeresett hibát tartalmazó html element valóban megjelent-e a felületen vagy tovább navigált az oldal
         // Assert.assertTrue(errorMessage.isDisplayed());
 
@@ -57,7 +57,7 @@ public class LoginScreenTests extends DriverBaseTest {
         Thread.sleep(2000);
 
         WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
-        Assert.assertEquals("Epic sadface: Username is required", errorMessage.getText());
+        Assert.assertEquals(errorMessage.getText(), "Epic sadface: Username is required");
     }
 
     // TC3
@@ -77,7 +77,7 @@ public class LoginScreenTests extends DriverBaseTest {
         Thread.sleep(2000);
 
         WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
-        Assert.assertEquals("Epic sadface: Username is required", errorMessage.getText());
+        Assert.assertEquals(errorMessage.getText(), "Epic sadface: Username is required");
     }
 
     // TC4
@@ -92,7 +92,7 @@ public class LoginScreenTests extends DriverBaseTest {
         loginButton.click();
         Thread.sleep(2000);
         WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
-        Assert.assertEquals("Epic sadface: Username and password do not match any user in this service", errorMessage.getText());
+        Assert.assertEquals(errorMessage.getText(), "Epic sadface: Username and password do not match any user in this service");
     }
 
     // TC5
@@ -109,7 +109,7 @@ public class LoginScreenTests extends DriverBaseTest {
         Thread.sleep(2000);
 
         WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
-        Assert.assertEquals("Epic sadface: Username and password do not match any user in this service", errorMessage.getText());
+        Assert.assertEquals(errorMessage.getText(), "Epic sadface: Username and password do not match any user in this service");
     }
 
     // TC6
@@ -125,7 +125,7 @@ public class LoginScreenTests extends DriverBaseTest {
         Thread.sleep(2000);
 
         WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
-        Assert.assertEquals("Epic sadface: Username and password do not match any user in this service", errorMessage.getText());
+        Assert.assertEquals(errorMessage.getText(), "Epic sadface: Username and password do not match any user in this service");
     }
 
     // TC7
@@ -141,7 +141,7 @@ public class LoginScreenTests extends DriverBaseTest {
         String pageCurrentUrl = driver.getCurrentUrl();
         Thread.sleep(2000);
 
-        Assert.assertEquals("https://www.saucedemo.com/inventory.html", pageCurrentUrl);
+        Assert.assertEquals(pageCurrentUrl, "https://www.saucedemo.com/inventory.html");
     }
 
     // TC8
@@ -156,7 +156,7 @@ public class LoginScreenTests extends DriverBaseTest {
         Thread.sleep(2000);
 
         WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
-        Assert.assertEquals("Epic sadface: Username is required", errorMessage.getText());
+        Assert.assertEquals(errorMessage.getText(), "Epic sadface: Username is required");
     }
 
     // TC9 wrong username and empty pwd
@@ -187,8 +187,8 @@ public class LoginScreenTests extends DriverBaseTest {
         Thread.sleep(2000);
 
         WebElement errorMessage = driver.findElement(By.cssSelector("h3[data-test='error']"));
-        Assert.assertEquals("Username", usernamePlaceholderValue);
-        Assert.assertEquals("Password", pwdPlaceholderValue);
+        Assert.assertEquals(usernamePlaceholderValue, "Username");
+        Assert.assertEquals(pwdPlaceholderValue, "Password");
     }
 
     // TC11: username and pwd placeholder
@@ -199,6 +199,6 @@ public class LoginScreenTests extends DriverBaseTest {
         String pwdPlaceholderValue = pwdInput.getAttribute("type");
         Thread.sleep(2000);
 
-        Assert.assertEquals("password", pwdPlaceholderValue);
+        Assert.assertEquals(pwdPlaceholderValue, "password");
     }
 }
