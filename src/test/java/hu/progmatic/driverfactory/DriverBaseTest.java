@@ -30,10 +30,12 @@ public class DriverBaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(30000));
 
         actions = new Actions(driver);
+        System.out.println("Test case execution started");
     }
 
     @AfterMethod(alwaysRun = true)
     public void driverCleanUp() {
         driver.quit();
+        System.out.println("Test case execution finished");
     }
 }
