@@ -21,21 +21,21 @@ public class HomeScreenTest extends DriverBaseTest {
     }
 
     @Test
-    public void checkHomeMainNavigation() {
+    public void checkHomeMainNavigationTest() {
         homePage = new HomePage(driver);
         homePage.loadHomePage();
         homePage.clickHomeMainImage();
         Assert.assertEquals(driver.getCurrentUrl(),
-    "https://magento.softwaretestingboard.com/collections/yoga-new.html");
+                "https://magento.softwaretestingboard.com/collections/yoga-new.html");
     }
 
     @Test
-    public void checkJacketsMenuItem() throws InterruptedException {
+    public void checkWomenMenuItemTest() throws InterruptedException {
         homePage = new HomePage(driver);
-        header = new HeaderComponent(driver);
+        header = new HeaderComponent(driver, wait);
         homePage.loadHomePage();
-        header.navigateToJacketsMenu();
+        header.navigateToWomenMenu();
         Assert.assertEquals(driver.getCurrentUrl(),
-    "https://magento.softwaretestingboard.com/women/tops-women/jackets-women.html");
+                "https://magento.softwaretestingboard.com/women.html");
     }
 }

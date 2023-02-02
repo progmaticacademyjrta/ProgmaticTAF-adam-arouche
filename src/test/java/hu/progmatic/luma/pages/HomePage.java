@@ -9,6 +9,7 @@ public class HomePage {
     WebDriver driver;
     By whatsnewMenuBy = By.xpath("//*[@id='ui-id-3']/span");
     //By whatsnewMenuBy = By.xpath("//*[contains(text(),'What')]");
+    By welcomeMsg = By.xpath("//*[contains(text(),'Default welcome msg')]");
     By homeMainImageBy = By.className("home-main");
 
     public HomePage(WebDriver driver) {
@@ -17,7 +18,7 @@ public class HomePage {
 
     public void loadHomePage() {
         driver.get("https://magento.softwaretestingboard.com");
-        WebElement whatsnewMenuItem = driver.findElement(whatsnewMenuBy);
+        WebElement whatsnewMenuItem = driver.findElement(welcomeMsg);
         Assert.assertTrue(whatsnewMenuItem.isDisplayed());
         System.out.println("Page loaded properly!");
     }
