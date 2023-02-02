@@ -17,7 +17,7 @@ public class HomePage {
     }
 
     public void loadHomePage() {
-        driver.get("");
+        driver.get("https://katalon-demo-cura.herokuapp.com");
         WebElement headerElement = driver.findElement(headerBy);
         Assert.assertTrue(headerElement.isDisplayed());
         System.out.println("Homepage loaded properly.");
