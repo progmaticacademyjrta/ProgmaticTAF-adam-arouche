@@ -13,6 +13,7 @@ public class HeaderComponent {
     By womenMenu = By.id("ui-id-4");
     //By topsMenu = By.id("ui-id-9");
     //By jacketsMenu = By.id("ui-id-11");
+    By logoImgBy = By.className("logo");
 
     public HeaderComponent(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -29,5 +30,11 @@ public class HeaderComponent {
         WebElement jacketsMenuItem = driver.findElement(jacketsMenu);
         jacketsMenuItem.click();*/
         System.out.println("Navigation to women menu item happened");
+    }
+
+    public void clickonLogoImgToNavigateHomePage(){
+        WebElement logoImg = driver.findElement(logoImgBy);
+        logoImg.click();
+        System.out.println("Logo image clicked");
     }
 }
