@@ -3,7 +3,7 @@ Email:roni_cost@example.com
 Password:roni_cost3@example.com
 
 HomePage
-- successful login test
+- successful login test // captcha is incorrect
 - image navigation test: click on an image on the home page and check if it navigates to the correct url
 (this could be done for all the images on the home page)
 - test menu item navigation
