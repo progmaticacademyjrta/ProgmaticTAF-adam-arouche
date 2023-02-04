@@ -12,4 +12,13 @@ public class HomePageTests extends DriverBaseTest {
         homePage = new HomePage(driver, wait);
         homePage.loadHomePage();
     }
+
+    @Test(description = "Make appointment button is clickable", groups = {"chritical"})
+    public void makeAppointmentClickable() throws InterruptedException {
+        homePage = new HomePage(driver, wait);
+        homePage.loadHomePage();
+        Thread.sleep(2000);
+        homePage.makeAppointmentClickable();
+
+    }
 }

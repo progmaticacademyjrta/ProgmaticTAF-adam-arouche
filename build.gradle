@@ -17,3 +17,9 @@ dependencies {
 test {
     useTestNG()
 }
+task Tests(type: Test) { // we define a task with name 'chritical'
+    def groups = System.getProperty('chritical', 'secondary')
+    useTestNG() {
+        includeGroups groups
+    }
+}
