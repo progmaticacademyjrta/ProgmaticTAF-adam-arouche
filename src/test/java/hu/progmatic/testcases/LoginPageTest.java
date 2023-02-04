@@ -30,6 +30,5 @@ public class LoginPageTest extends DriverBaseTest {
     public void wrongUsernameCorrectPass() {
         loginPage = new LoginPage(driver, wait);
         loginPage.wrongUserCorrectPass();
-
     }
 }
