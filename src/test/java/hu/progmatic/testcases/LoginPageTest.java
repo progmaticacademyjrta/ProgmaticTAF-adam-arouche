@@ -1,17 +1,14 @@
 package hu.progmatic.testcases;
 
 import hu.progmatic.driverfactory.DriverBaseTest;
-import hu.progmatic.pages.HomePage;
 import hu.progmatic.pages.LoginPage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 public class LoginPageTest extends DriverBaseTest {
     LoginPage loginPage;
 
     @Test(description = "TC01: Homepage loaded test that loads the page and validates whether the header is displayed or not.",
-    groups = {"chritical"})
+            groups = {"chritical"})
     public void loadLoginPage() {
         loginPage = new LoginPage(driver, wait);
         loginPage.loadLoginPage();
@@ -21,24 +18,18 @@ public class LoginPageTest extends DriverBaseTest {
     public void wrongUsernameWrongPass() {
         loginPage = new LoginPage(driver, wait);
         loginPage.wrongUsernameWrongPass();
-
     }
 
-    @Test(description = "Check if the Username is correct,but Passwords is wrong" , groups = {"secondary"})
+    @Test(description = "Check if the Username is correct,but Passwords is wrong", groups = {"secondary"})
     public void correctUsernameWrongPass() {
         loginPage = new LoginPage(driver, wait);
         loginPage.correctUserWrongPass();
-
-
     }
 
-    @Test(description = "Check if the Username is wrong and Passwords is ok" , groups = {"secondary"})
+    @Test(description = "Check if the Username is wrong and Passwords is ok", groups = {"secondary"})
     public void wrongUsernameCorrectPass() {
         loginPage = new LoginPage(driver, wait);
         loginPage.wrongUserCorrectPass();
 
-
     }
-
-
 }
